@@ -20,4 +20,5 @@ class PostController extends Controller
             'showPost' => $showPost
         ]);
     }
+
 }
