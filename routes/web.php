@@ -6,4 +6,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/view-post', 'PostController@viewPost');
+Route::get('/view-post', [App\Http\Controllers\PostController::class, 'viewPost']);
