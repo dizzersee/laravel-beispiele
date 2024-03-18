@@ -21,4 +21,14 @@ class PostController extends Controller
         ]);
     }
 
+    public function createPost()
+    {
+        $post = new Post();
+        $post->title = "Neuer Post";
+        $post->content = "Lorem Ipsum Dolor";
+        $post->save();
+
+        return "Post erfolgreich erstellt!";
+    }
+
 }
