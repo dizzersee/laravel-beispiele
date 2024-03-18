@@ -13,8 +13,11 @@ class PostController extends Controller
 
         $post = new Post();
 
+        $showPost = false;
+
         return view('post_view', [
-            'post' => $post
+            'post' => $post,
+            'showPost' => $showPost
         ]);
     }
 }

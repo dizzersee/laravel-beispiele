@@ -1,5 +1,19 @@
-<div>
-    <h1>Post:</h1>
+@extends('master_layout')
 
-    <p>{{ dump($post) }}</p>
-</div>
+@section('title', 'Post View')
+
+@section('content')
+
+    <div>
+        <h1>Post:</h1>
+
+        @if($showPost)
+            <p>{{ dump($post) }}</p>
+        @else
+            <p>Post not found</p>
+        @endif
+
+
+    </div>
+
+@endsection
