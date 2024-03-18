@@ -18,7 +18,7 @@
                             {{$post->title}}
                         </a>
                     </h3>
-                    <p>{{$post->created_at}}</p>
+                    <p>{{$post->created_at->format('d/m/Y')}}</p>
                     <p>{{$post->content}}</p>
 
 

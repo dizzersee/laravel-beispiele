@@ -27,6 +27,7 @@ class PostController extends Controller
     }
 
     public function viewAllPosts() {
+
         $posts = Post::all();
         return view('all_posts', [
             'posts' => $posts
@@ -40,4 +41,12 @@ class PostController extends Controller
         ]);
     }
 
+    public function tests() {
+        $id = 1;
+        $post = Post::find($id);
+        $post->title = "Titel: " . $post->title;
+        $post->save();
+
+        return "Post erfolgreich aktualisiert!";
+    }
 }
