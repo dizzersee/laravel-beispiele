@@ -7,20 +7,6 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function viewPost()
-    {
-        // Punkt statt Slash! Ohne Dateiendung!
-
-        $post = new Post();
-
-        $showPost = false;
-
-        return view('post_view', [
-            'post' => $post,
-            'showPost' => $showPost
-        ]);
-    }
-
     public function createPost()
     {
         $post = new Post();
@@ -45,7 +31,13 @@ class PostController extends Controller
         return view('all_posts', [
             'posts' => $posts
         ]);
+    }
 
+    public function viewPost($id) {
+        $post = Post::find($id);
+        return view('post_view', [
+            'post' => $post
+        ]);
     }
 
 }

@@ -13,7 +13,11 @@
                     </a>
                     --}}
 
-                    <h3>{{$post->title}}</h3>
+                    <h3>
+                        <a href="/view-post/{{$post->id}}">
+                            {{$post->title}}
+                        </a>
+                    </h3>
                     <p>{{$post->created_at}}</p>
                     <p>{{$post->content}}</p>
 
