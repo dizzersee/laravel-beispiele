@@ -31,4 +31,13 @@ class PostController extends Controller
         return "Post erfolgreich erstellt!";
     }
 
+    public function createPost2() {
+        Post::create([
+            'title' => 'Neuer Post von createPost2',
+            'content' => 'Lorem Ipsum Dolor'
+        ]);
+
+        return "Post erfolgreich erstellt!";
+    }
+
 }
