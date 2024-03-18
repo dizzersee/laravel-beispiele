@@ -9,3 +9,4 @@ Route::get('/', function () {
 Route::get('/view-post', [App\Http\Controllers\PostController::class, 'viewPost']);
 Route::get('/create-post', [App\Http\Controllers\PostController::class, 'createPost']);
 Route::get('/create-post-2', [App\Http\Controllers\PostController::class, 'createPost2']);
+Route::get('/view-all-posts', [App\Http\Controllers\PostController::class, 'viewAllPosts']);

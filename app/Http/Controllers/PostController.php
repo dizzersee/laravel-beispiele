@@ -40,4 +40,12 @@ class PostController extends Controller
         return "Post erfolgreich erstellt!";
     }
 
+    public function viewAllPosts() {
+        $posts = Post::all();
+        return view('all_posts', [
+            'posts' => $posts
+        ]);
+
+    }
+
 }
