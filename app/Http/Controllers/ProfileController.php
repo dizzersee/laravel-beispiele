@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index() {
-        $profile = Profile::find(1);
-        $user = $profile->user;
 
-        dump($user);
+        $user = User::find(1);
+        $profil = new Profile();
+        $profil->description = "Test";
+
+        $user->profile()->save($profil);
 
         return "Test";
     }
