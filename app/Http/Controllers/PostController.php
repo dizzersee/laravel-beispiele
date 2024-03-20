@@ -47,6 +47,7 @@ class PostController extends Controller
         $post->title = "Titel: " . $post->title;
         $post->save();
 
+
         return "Post erfolgreich aktualisiert!";
     }
 }
