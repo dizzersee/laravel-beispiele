@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-           $table->foreignId('user_id')->constrained()->default(1);
+        Schema::create('post_topic', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('post_id')->constrained();
+            $table->foreignId('topic_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -21,9 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('post_topic');
     }
 };
