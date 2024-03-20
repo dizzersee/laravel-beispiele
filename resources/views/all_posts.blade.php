@@ -18,6 +18,9 @@
                             {{$post->title}}
                         </a>
                     </h3>
+
+
+                    <p>Author: {{$post->user->name}}</p>
                     <p>{{$post->created_at->format('d/m/Y')}}</p>
                     <p>{{$post->content}}</p>
 
