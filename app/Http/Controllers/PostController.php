@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,17 @@ class PostController extends Controller
     public function createPost()
     {
         $post = new Post();
-        $post->title = "Neuer Post";
+        $post->title = "Neuer Post vom User 1";
         $post->content = "Lorem Ipsum Dolor";
-        $post->save();
+        // $post->save();
+
+        $user = User::find(1);
+        $user->posts()->save($post);
+
+        $topics = Topic::all();
+        $post->topics()->attach($topics);
+
+        $post->topics()->detach(1);
 
         return "Post erfolgreich erstellt!";
     }
