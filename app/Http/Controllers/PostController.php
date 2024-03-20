@@ -39,8 +39,10 @@ class PostController extends Controller
 
     public function viewPost($id) {
         $post = Post::find($id);
+        $topics = $post->topics;
         return view('post_view', [
-            'post' => $post
+            'post' => $post,
+            'topics' => $topics
         ]);
     }
 
