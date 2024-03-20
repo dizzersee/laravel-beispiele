@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         // Profil erstellen (One-to-One:
 
@@ -23,6 +23,6 @@ class ProfileController extends Controller
         // Profil löschen (One-to-One):
         $profile->delete();
 
-        return "Test";
+        return 'Test';
     }
 }

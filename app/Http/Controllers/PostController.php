@@ -9,16 +9,17 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
-    public function getCreatePost() {
+    public function getCreatePost()
+    {
         return view('create_post');
     }
 
-    public function postCreatePost(Request $request) {
+    public function postCreatePost(Request $request)
+    {
 
         $request->validate([
-            'title' => 'required|min:5|max:' . Post::MAX_TITLE_LENGTH . '|string',
-            'content' => 'required|min:10|max:' . Post::MAX_CONTENT_LENGTH . '|string',
+            'title' => 'required|min:5|max:'.Post::MAX_TITLE_LENGTH.'|string',
+            'content' => 'required|min:10|max:'.Post::MAX_CONTENT_LENGTH.'|string',
         ]);
 
         $title = $request->input('title');
@@ -37,8 +38,8 @@ class PostController extends Controller
     public function createPostOld()
     {
         $post = new Post();
-        $post->title = "Neuer Post vom User 1";
-        $post->content = "Lorem Ipsum Dolor";
+        $post->title = 'Neuer Post vom User 1';
+        $post->content = 'Lorem Ipsum Dolor';
         // $post->save();
 
         $user = User::find(1);
@@ -49,26 +50,28 @@ class PostController extends Controller
 
         $post->topics()->detach(1);
 
-        return "Post erfolgreich erstellt!";
+        return 'Post erfolgreich erstellt!';
     }
 
-    public function createPost2() {
+    public function createPost2()
+    {
         Post::create([
             'title' => 'Neuer Post von createPost2',
-            'content' => 'Lorem Ipsum Dolor'
+            'content' => 'Lorem Ipsum Dolor',
         ]);
 
-        return "Post erfolgreich erstellt!";
+        return 'Post erfolgreich erstellt!';
     }
 
-    public function viewAllPosts(Request $request) {
+    public function viewAllPosts(Request $request)
+    {
 
         $sort = $request->input('sort', 'asc');
 
-        if($sort == 'asc') {
+        if ($sort == 'asc') {
             $posts = Post::orderBy('id', 'asc')->get();
 
-        } elseif($sort == 'desc') {
+        } elseif ($sort == 'desc') {
             $posts = Post::orderBy('id', 'desc')->get();
         } else {
             $posts = Post::all();
@@ -77,25 +80,29 @@ class PostController extends Controller
         // TODO - Eager Loading for authors of posts!
 
         return view('all_posts', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
-    public function viewPost($id) {
+    public function viewPost($id)
+    {
         $post = Post::find($id);
         $topics = $post->topics;
+
         return view('post_view', [
             'post' => $post,
-            'topics' => $topics
+            'topics' => $topics,
         ]);
     }
 
-    public function tests() {
-        $user = User::find(1);
-        $posts = $user->posts;
-        dump($posts);
+    public function tests()
+    {
+        $configName = config('app.name');
+        dump($configName);
 
+        $postsPerPage = config('custom.posts_per_page');
+        dump($postsPerPage);
 
-        return "Post erfolgreich aktualisiert!";
+        return 'Test';
     }
 }

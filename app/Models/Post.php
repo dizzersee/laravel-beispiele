@@ -10,19 +10,21 @@ class Post extends Model
     use HasFactory;
 
     public const MAX_TITLE_LENGTH = 100;
+
     public const MAX_CONTENT_LENGTH = 1000;
 
     protected $fillable = [
         'title',
-        'content'
+        'content',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function topics() {
+    public function topics()
+    {
         return $this->belongsToMany(Topic::class)->withTimestamps();
     }
-
 }

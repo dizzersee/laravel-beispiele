@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-
     use HasFactory, Notifiable;
 
     /**
@@ -46,13 +45,13 @@ class User extends Authenticatable
         ];
     }
 
-
-    public function profile() {
+    public function profile()
+    {
         return $this->hasOne(Profile::class);
     }
 
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
-
 }
