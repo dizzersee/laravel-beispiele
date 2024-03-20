@@ -9,6 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
+    public const MAX_TITLE_LENGTH = 100;
+    public const MAX_CONTENT_LENGTH = 1000;
+
     protected $fillable = [
         'title',
         'content'

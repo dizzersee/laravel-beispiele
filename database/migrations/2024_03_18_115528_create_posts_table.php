@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100)->default("Untitled");
-            $table->string('content', 1000)->default("No content");
+            $table->string('title', \App\Models\Post::MAX_TITLE_LENGTH)->default("Untitled");
+            $table->string('content', \App\Models\Post::MAX_CONTENT_LENGTH)->default("No content");
             $table->timestamps();
         });
     }
