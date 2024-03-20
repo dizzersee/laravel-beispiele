@@ -14,7 +14,7 @@
                     --}}
 
                     <h3>
-                        <a href="/view-post/{{$post->id}}">
+                        <a href="{{ route('view-post', ['id' => $post->id]) }}">
                             {{$post->title}}
                         </a>
                     </h3>
