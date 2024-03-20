@@ -14,6 +14,23 @@ class PostController extends Controller
         return view('create_post');
     }
 
+    public function postCreatePost(Request $request) {
+
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        // TODO - Validation
+
+        $post = new Post();
+        $post->title = $title;
+        $post->content = $content;
+        $post->user_id = 1;
+        $post->save();
+
+        return redirect()->route('view-post', ['id' => $post->id]);
+
+    }
+
     public function createPostOld()
     {
         $post = new Post();
