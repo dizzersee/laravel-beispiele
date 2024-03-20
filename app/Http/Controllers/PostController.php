@@ -36,11 +36,21 @@ class PostController extends Controller
         return "Post erfolgreich erstellt!";
     }
 
-    public function viewAllPosts() {
+    public function viewAllPosts(Request $request) {
+
+        $sort = $request->input('sort', 'asc');
+
+        if($sort == 'asc') {
+            $posts = Post::orderBy('id', 'asc')->get();
+
+        } elseif($sort == 'desc') {
+            $posts = Post::orderBy('id', 'desc')->get();
+        } else {
+            $posts = Post::all();
+        }
 
         // TODO - Eager Loading for authors of posts!
 
-        $posts = Post::all();
         return view('all_posts', [
             'posts' => $posts
         ]);
