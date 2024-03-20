@@ -10,11 +10,18 @@ class ProfileController extends Controller
 {
     public function index() {
 
-        $user = User::find(1);
-        $profil = new Profile();
-        $profil->description = "Test";
+        // Profil erstellen (One-to-One:
 
-        $user->profile()->save($profil);
+        $user = User::find(1);
+        // $profil = new Profile();
+        // $profil->description = "Test";
+
+        // $user->profile()->save($profil);
+
+        $profile = $user->profile;
+
+        // Profil löschen (One-to-One):
+        $profile->delete();
 
         return "Test";
     }
