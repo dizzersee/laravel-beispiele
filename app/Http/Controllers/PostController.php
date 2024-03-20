@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function createPost()
+
+    public function getCreatePost() {
+        return view('create_post');
+    }
+
+    public function createPostOld()
     {
         $post = new Post();
         $post->title = "Neuer Post vom User 1";
