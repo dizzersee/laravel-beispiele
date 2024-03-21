@@ -18,7 +18,6 @@ Route::middleware(['auth:api'])->group(function() {
 });
 
 Route::get('protectedroute', function() {
-
     $user = Auth::user();
     echo "ID: " . $user->id . "<br>";
     $post = \App\Models\Post::find(1);

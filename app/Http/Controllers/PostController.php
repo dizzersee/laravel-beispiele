@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Models\User;
+use App\Notifications\NewPostNotification;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -95,10 +96,8 @@ class PostController extends Controller
 
     public function tests()
     {
-        $topic = Topic::find(1);
-        $topic->title = 'Frühling';
-        $topic->save();
-
+        $user = User::find(1);
+        $user->notify(new NewPostNotification());
         return 'Test';
     }
 }
