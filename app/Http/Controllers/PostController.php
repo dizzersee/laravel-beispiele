@@ -77,8 +77,6 @@ class PostController extends Controller
             $posts = Post::all();
         }
 
-        // TODO - Eager Loading for authors of posts!
-
         return view('all_posts', [
             'posts' => $posts,
         ]);

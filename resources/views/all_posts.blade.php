@@ -19,7 +19,6 @@
                         </a>
                     </h3>
 
-
                     <p>Author: {{$post->user->name}}</p>
 
                     <p>{{$post->created_at->diffForHumans()}}</p>

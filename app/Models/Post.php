@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Post extends Model
 {
@@ -17,6 +18,21 @@ class Post extends Model
         'title',
         'content',
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($post) {
+
+            Log::info("Post wird erstellt: $post->title");
+
+        });
+
+        static::updated(function ($post) {
+
+            Log::info("Post wurde bearbeitet: $post->title");
+
+        });
+    }
 
     public function user()
     {
