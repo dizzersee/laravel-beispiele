@@ -18,6 +18,16 @@ Route::middleware(['auth:api'])->group(function() {
 });
 
 Route::get('protectedroute', function() {
+
     $user = Auth::user();
-    return "Hallo, " . $user->name . "!";
+    echo "ID: " . $user->id . "<br>";
+    $post = \App\Models\Post::find(1);
+    if($user->can('update', $post)) {
+        $post->title = "New Title";
+        $post->save();
+        return "$post";
+    } else {
+        return "You are not allowed to update this post!";
+    }
+
 })->middleware('auth:api');

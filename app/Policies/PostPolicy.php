@@ -38,9 +38,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        return $user->id === $post->user_id
-            ? Response::allow()
-            : Response::deny('You do not own this post.');
+        return $user->id === $post->user_id;
     }
 
     /**
