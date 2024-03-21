@@ -69,12 +69,12 @@ class PostController extends Controller
         $sort = $request->input('sort', 'asc');
 
         if ($sort == 'asc') {
-            $posts = Post::orderBy('id', 'asc')->get();
+            $posts = Post::orderBy('id', 'asc')->with('user')->get();
 
         } elseif ($sort == 'desc') {
-            $posts = Post::orderBy('id', 'desc')->get();
+            $posts = Post::orderBy('id', 'desc')->with('user')->get();
         } else {
-            $posts = Post::all();
+            $posts = Post::with('user')->all();
         }
 
         return view('all_posts', [

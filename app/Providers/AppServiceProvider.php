@@ -24,8 +24,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Post::observe(PostObserver::class);
 
-        \DB::listen(function($sql) {
-            dump($sql->sql);
-        });
+        // Alle DB-Queries anzeigen lassen:
+        // \DB::listen(function($sql) {
+        //    dump($sql->sql);
+        // });
     }
 }
