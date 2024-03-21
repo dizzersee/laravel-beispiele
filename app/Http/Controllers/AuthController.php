@@ -11,7 +11,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $validator = $request->validate([
+        $request->validate([
             'name'=> 'required|string',
             'email' => 'required|email',
             'password' => 'required|string|min:6|confirmed'
@@ -24,6 +24,24 @@ class AuthController extends Controller
         $success['token'] = $user->createToken('My Laravel Project Token')->accessToken;
         $success['message'] = "User Registration Successfully!";
         return response()->json(['data' => $success], 200);
+    }
+
+    public function login(Request $request) {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $userData = User::where('email',$request->input('email'))->first();
+        if ($userData) {
+            if (Hash::check($request->password, $userData->password)) {
+                $success['token'] = $userData->createToken('My Laravel Project Token')->accessToken;
+                $success['massage'] = "Login Successfully!";
+                return response()->json(['data'=>$success], 200);
+            }
+        } else {
+            return response()->json(['message'=> 'User does not exist'], 422);
+        }
     }
 
 }
