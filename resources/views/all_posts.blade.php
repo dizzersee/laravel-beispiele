@@ -21,7 +21,8 @@
 
 
                     <p>Author: {{$post->user->name}}</p>
-                    <p>{{$post->created_at->format('d/m/Y')}}</p>
+
+                    <p>{{$post->created_at->diffForHumans()}}</p>
                     <p>{{$post->content}}</p>
 
 
