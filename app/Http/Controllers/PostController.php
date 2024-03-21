@@ -97,11 +97,9 @@ class PostController extends Controller
 
     public function tests()
     {
-        $configName = config('app.name');
-        dump($configName);
-
-        $postsPerPage = config('custom.posts_per_page');
-        dump($postsPerPage);
+        $topic = Topic::find(1);
+        $topic->title = 'Frühling';
+        $topic->save();
 
         return 'Test';
     }

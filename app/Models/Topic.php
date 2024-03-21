@@ -25,6 +25,9 @@ class Topic extends Model
             get: function ($value) {
                 return strtoupper($value);
             },
+            set: function ($value) {
+                return strtolower($value);
+            }
         );
     }
 }
