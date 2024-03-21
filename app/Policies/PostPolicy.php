@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\Models\Post;
 use App\Models\User;
 use Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategy;
-use \Illuminate\Support\Facades\Response;
+use Illuminate\Auth\Access\Response;
 
 class PostPolicy
 {
@@ -38,7 +38,9 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id
+            ? Response::allow()
+            : Response::deny('You do not own this post.');
     }
 
     /**
